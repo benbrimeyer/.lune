@@ -55,7 +55,8 @@ if jiraNetRequest.statusCode == 200 then
         end
     end
 
-    local subtitle = stdio.prompt("text", "Enter branch subtitle (optional)...", "init")
+    print("args:", process.args)
+    local subtitle = if process.args[1] then process.args[1] else stdio.prompt("text", "Enter branch subtitle (optional)...", "init")
     local branchName = `bbrimeyer/fb/{selectedTicketKey}/{subtitle}`
 
     local gitLatestResult = process.spawn("git", {
