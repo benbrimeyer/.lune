@@ -100,6 +100,6 @@ local jiraNetRequest = net.request({
 
 if jiraNetRequest.statusCode == 201 then
     local jiraIssue = serde.decode("json", jiraNetRequest.body)
-    print(`Issued created: {jiraIssue.key}`)
+    print(`Issued created: https://{JIRA_DOMAIN}.atlassian.net/browse/{jiraIssue.key}`)
     return jiraIssue.key
 end
