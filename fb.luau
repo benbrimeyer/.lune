@@ -14,7 +14,7 @@ local BUG_EMOJI = utf8.char(0x1F41E)
 
 print("\nSearching assigned tickets...\n")
 local maxResults = 9
-local jql_query = `assignee in (currentUser()) AND issuetype in (Story, Bug) AND status not in (Closed, Done, "Ready to Deploy") AND sprint in openSprints()`
+local jql_query = `assignee in (currentUser()) AND issuetype in (Story, Bug) AND status not in (Closed, Done, "Ready to Deploy", "In Testing") AND sprint in openSprints()`
 local jiraNetRequest = net.request({
     url = `https://{JIRA_DOMAIN}.atlassian.net/rest/api/3/search?jql={jql_query}&maxResults={maxResults}&fields=summary,issuetype,key,status`,
     method = "GET",
