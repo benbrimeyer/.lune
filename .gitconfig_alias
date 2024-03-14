@@ -1,0 +1,15 @@
+[alias]
+	# auth token update
+	hub-auth = "!open ~/.config/hub"
+	# Creates a new feature branch off of latest master with the given name
+	fb = "!f() { lune run fb $1; }; f"
+	# Creates a new PR on github if one does not already exist for this branch
+	review = "!f() { lune run review && printf 'Copied to clipboard: %s\n' $(pbpaste); }; f"
+	# Creates a Jira ticket
+	todo = "!f() { lune run todo -- $@; }; f"
+	# Determines the "default branch" of the repository: https://stackoverflow.com/a/67672350
+	default-branch = !git symbolic-ref refs/remotes/origin/HEAD | cut -d'/' -f4
+	# Fetches latest changes from repository origin
+	latest = "!git fetch origin && git checkout $(git default-branch) && git merge origin/$(git default-branch)"
+	# Attempt to update your branch with the latest changes from default-branch
+	sync = "!git fetch origin $(git default-branch) && git merge origin/$(git default-branch) && git push origin"

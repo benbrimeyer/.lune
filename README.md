@@ -1,5 +1,11 @@
 A collection of lune scripts I use for my personal workflows.
 
+## Installation
+
+I'd recommend installing `lune` globally via [foreman](https://github.com/Roblox/foreman) or [aftman](https://github.com/LPGhatguy/aftman).
+
+- [Foreman global install instructions (System Tools)](https://github.com/Roblox/foreman?tab=readme-ov-file#system-tools)
+
 ## Configuration
 
 Create a `secrets` folder at the root of the directory and add the following files:
@@ -33,3 +39,9 @@ This is likely the domain of your workplace and would read something like `compa
 
 return "company_name.atlassian.net"
 ```
+
+## `.gitconfig` setup
+
+To use these scripts as `git` scripts, copy and paste the contents of the [`.gitconfig_alias`](.gitconfig_alias) file into your `.gitconfig` file.
+
+This will allow you to use the lune scripts as `git` commands. For example, `git review` will run the `review` script.
