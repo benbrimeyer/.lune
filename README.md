@@ -7,6 +7,26 @@ A collection of lune scripts I use for my personal workflows.
 - fb: Create a feature branch from a JIRA ticket (or not)
 - review: Create a pull request from the current branch to the default branch (requires hub-install to be ran first)
 
+### Demo
+
+I can create a JIRA ticket to do later with the following command after doing the full setup:
+
+```bash
+git todo "Create a lune script to automate JIRA ticket creation"
+```
+
+I can then create a feature branch with the following command:
+
+```bash
+git fb
+```
+
+When I'm done with the branch, I can create a review with the following command:
+
+```bash
+git review
+```
+
 ## Installation
 
 First install lune globally (install guide [here](https://lune-org.github.io/docs/getting-started/1-installation)).
