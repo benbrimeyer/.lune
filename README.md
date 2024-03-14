@@ -15,7 +15,7 @@ I'd recommend installing `lune` globally via [foreman](https://github.com/Roblox
 
 - [Foreman global install instructions (System Tools)](https://github.com/Roblox/foreman?tab=readme-ov-file#system-tools)
 
-I would clone this repository into your global `.lune` directory.
+I would clone this repository into your global `.lune` directory. This will allow you to use these scripts from any directory on your machine.
 
 - On MacOSX, this would be your `~/.lune` directory.
 
