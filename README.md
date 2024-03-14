@@ -9,9 +9,15 @@ A collection of lune scripts I use for my personal workflows.
 
 ## Installation
 
+First install lune globally (install guide [here](https://lune-org.github.io/docs/getting-started/1-installation)).
+
 I'd recommend installing `lune` globally via [foreman](https://github.com/Roblox/foreman) or [aftman](https://github.com/LPGhatguy/aftman).
 
 - [Foreman global install instructions (System Tools)](https://github.com/Roblox/foreman?tab=readme-ov-file#system-tools)
+
+I would clone this repository into your global `.lune` directory.
+
+- On MacOSX, this would be your `~/.lune` directory.
 
 ## Configuration
 
