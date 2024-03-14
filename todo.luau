@@ -5,7 +5,7 @@ local net = require("@lune/net")
 local serde = require("@lune/serde")
 
 local JIRA_AUTH = require("./secrets/JIRA_AUTH")
-local JIRA_DOMAIN = require("./secrets/JIRA_DOMAIN")
+local JIRA_URL = require("./secrets/JIRA_URL")
 
 local getIssueTypesForUser = require("./jira/getIssueTypesForUser")
 local getProjectFromKey = require("./jira/getProjectFromKey")
@@ -63,7 +63,7 @@ local summary = findUntilFlag(process.args) or stdio.prompt("text", "Summary")
 local description = findFlag(process.args, "--description") or nil
 
 local jiraNetRequest = net.request({
-    url = `https://{JIRA_DOMAIN}.atlassian.net/rest/api/3/issue`,
+    url = `https://{JIRA_URL}.atlassian.net/rest/api/3/issue`,
     method = "POST",
     headers = {
         Authorization = "Basic " .. JIRA_AUTH,
@@ -100,6 +100,6 @@ local jiraNetRequest = net.request({
 
 if jiraNetRequest.statusCode == 201 then
     local jiraIssue = serde.decode("json", jiraNetRequest.body)
-    print(`Issued created: https://{JIRA_DOMAIN}.atlassian.net/browse/{jiraIssue.key}`)
+    print(`Issued created: https://{JIRA_URL}/browse/{jiraIssue.key}`)
     return jiraIssue.key
 end

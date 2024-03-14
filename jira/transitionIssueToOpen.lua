@@ -2,11 +2,11 @@ local net = require("@lune/net")
 local serde = require("@lune/serde")
 
 local JIRA_AUTH = require("../secrets/JIRA_AUTH")
-local JIRA_DOMAIN = require("../secrets/JIRA_DOMAIN")
+local JIRA_URL = require("../secrets/JIRA_URL")
 
 return function(selectedTicketKey: string): boolean
     local jiraGetWorkflowRequest = net.request({
-        url = `https://{JIRA_DOMAIN}.atlassian.net/rest/api/3/issue/{selectedTicketKey}/transitions`,
+        url = `https://{JIRA_URL}/rest/api/3/issue/{selectedTicketKey}/transitions`,
         method = "GET",
         headers = {
             Authorization = "Basic " .. JIRA_AUTH,
@@ -25,7 +25,7 @@ return function(selectedTicketKey: string): boolean
 
         if transitionId then
             local jiraTransitionRequest = net.request({
-                url = `https://{JIRA_DOMAIN}.atlassian.net/rest/api/3/issue/{selectedTicketKey}/transitions`,
+                url = `https://{JIRA_URL}/rest/api/3/issue/{selectedTicketKey}/transitions`,
                 method = "POST",
                 headers = {
                     Authorization = "Basic " .. JIRA_AUTH,

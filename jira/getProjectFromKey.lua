@@ -5,7 +5,7 @@ local net = require("@lune/net")
 local serde = require("@lune/serde")
 
 local JIRA_AUTH = require("../secrets/JIRA_AUTH")
-local JIRA_DOMAIN = require("../secrets/JIRA_DOMAIN")
+local JIRA_URL = require("../secrets/JIRA_URL")
 
 type Project = {
     key: string,
@@ -15,7 +15,7 @@ type Project = {
 
 return function(projectKey: string): Project?
     local jiraRequest = net.request({
-        url = `https://{JIRA_DOMAIN}.atlassian.net/rest/api/3/project/search?keys={projectKey}`,
+        url = `https://{JIRA_URL}/rest/api/3/project/search?keys={projectKey}`,
         method = "GET",
         headers = {
             Authorization = "Basic " .. JIRA_AUTH,

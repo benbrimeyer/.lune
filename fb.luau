@@ -4,7 +4,7 @@ local net = require("@lune/net")
 local serde = require("@lune/serde")
 
 local JIRA_AUTH = require("./secrets/JIRA_AUTH")
-local JIRA_DOMAIN = require("./secrets/JIRA_DOMAIN")
+local JIRA_URL = require("./secrets/JIRA_URL")
 
 local transitionIssueToOpen = require("./jira/transitionIssueToOpen")
 
@@ -16,7 +16,7 @@ print("\nSearching assigned tickets...\n")
 local maxResults = 9
 local jql_query = `assignee in (currentUser()) AND issuetype in (Story, Bug) AND status not in (Closed, Done, "Ready to Deploy", "In Testing") AND sprint in openSprints()`
 local jiraNetRequest = net.request({
-    url = `https://{JIRA_DOMAIN}.atlassian.net/rest/api/3/search?jql={jql_query}&maxResults={maxResults}&fields=summary,issuetype,key,status`,
+    url = `https://{JIRA_URL}/rest/api/3/search?jql={jql_query}&maxResults={maxResults}&fields=summary,issuetype,key,status`,
     method = "GET",
     headers = {
         Authorization = "Basic " .. JIRA_AUTH,
