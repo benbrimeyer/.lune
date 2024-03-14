@@ -5,6 +5,7 @@ local serde = require("@lune/serde")
 
 local JIRA_AUTH = require("./secrets/JIRA_AUTH")
 local JIRA_URL = require("./secrets/JIRA_URL")
+local BRANCH_PREFIX = require("./secrets/BRANCH_PREFIX")
 
 local transitionIssueToOpen = require("./jira/transitionIssueToOpen")
 
@@ -56,7 +57,7 @@ if jiraNetRequest.statusCode == 200 then
     end
 
     local subtitle = if process.args[1] then process.args[1] else stdio.prompt("text", "Enter branch subtitle (optional)...", "init")
-    local branchName = `bbrimeyer/fb/{selectedTicketKey}/{subtitle}`
+    local branchName = `{BRANCH_PREFIX}/fb/{selectedTicketKey}/{subtitle}`
 
     local gitLatestResult = process.spawn("git", {
         "latest",

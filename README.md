@@ -17,6 +17,16 @@ I'd recommend installing `lune` globally via [foreman](https://github.com/Roblox
 
 Create a `secrets` folder at the root of the directory and add the following files:
 
+### `BRANCH_PREFIX.luau` file with the following content:
+
+We'll use this sting to prefix any feature branches you create. (e.g. `prefix/feature/branch_name`)
+
+This can be any string you want as long as it can be used as part of a branch name. I usually use my name.
+
+```lua
+return "branch_prefix" -- no spaces allowed!!
+```
+
 ### `JIRA_AUTH.luau` file with the following content:
 
 First, you may generate an Atlassian API token [here](https://id.atlassian.com/manage-profile/security/api-tokens).
