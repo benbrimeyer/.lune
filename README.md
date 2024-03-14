@@ -1,5 +1,12 @@
 A collection of lune scripts I use for my personal workflows.
 
+## Current capabilities
+
+- hub-install: Install and configure `hub` for use with `review` command
+- todo: Create a JIRA ticket
+- fb: Create a feature branch from a JIRA ticket (or not)
+- review: Create a pull request from the current branch to the default branch (requires hub-install to be ran first)
+
 ## Installation
 
 I'd recommend installing `lune` globally via [foreman](https://github.com/Roblox/foreman) or [aftman](https://github.com/LPGhatguy/aftman).

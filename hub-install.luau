@@ -1,7 +1,7 @@
 local process = require("@lune/process")
 local stdio = require("@lune/stdio")
 
-local getHomeDir = require("./getHomeDir")
+local getHomeDir = require("./fs/getHomeDir")
 
 local boxWidth = 80
 local function generateHubConfig(authInfo)
