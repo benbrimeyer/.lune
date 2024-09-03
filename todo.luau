@@ -20,7 +20,11 @@ local function findUntilFlag(args: { string }): string?
         end
     end
 
-    return table.concat(result, " ")
+    local flagResult = table.concat(result, " ")
+    if flagResult == "" then
+        return nil
+    end
+    return flagResult
 end
 
 local function findFlag(args: { string }, flag: string): string?
@@ -60,10 +64,11 @@ local selectedIssueTypeIndex = stdio.prompt("select", "Issue type", issueTypesBy
 local selectedIssueType = issueTypes[selectedIssueTypeIndex]
 
 local summary = findUntilFlag(process.args) or stdio.prompt("text", "Summary")
+
 local description = findFlag(process.args, "--description") or nil
 
 local jiraNetRequest = net.request({
-    url = `https://{JIRA_URL}.atlassian.net/rest/api/3/issue`,
+    url = `https://{JIRA_URL}/rest/api/3/issue`,
     method = "POST",
     headers = {
         Authorization = "Basic " .. JIRA_AUTH,
@@ -102,4 +107,6 @@ if jiraNetRequest.statusCode == 201 then
     local jiraIssue = serde.decode("json", jiraNetRequest.body)
     print(`Issued created: https://{JIRA_URL}/browse/{jiraIssue.key}`)
     return jiraIssue.key
+else
+    print(jiraNetRequest)
 end
